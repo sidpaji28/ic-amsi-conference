@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspired Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        #vanta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .hero {
+            background: none;
+            height: 100vh;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+        }
+        .navbar {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .card img {
+            object-fit: cover;
+            height: 200px;
+        }
+        @media (max-width: 768px) {
+            .hero {
+                height: auto;
+                padding: 50px 20px;
+            }
+            .navbar-nav {
+                text-align: center;
+            }
+            .card img {
+                height: 150px;
+            }
+        }
+
+        /* Sidebar menu styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -33%;
+            width: 33%;
+            background-color: #ffffff;
+            color: #343a40;
+            overflow-y: auto;
+            transition: right 0.3s ease;
+            z-index: 1000;
+            padding: 20px;
+            height: 100%;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar.active {
+            right: 0;
+        }
+        .sidebar h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+        .sidebar ul li a {
+            color: #343a40;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #343a40;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="vanta-bg"></div>
+    <div id="app"></div>
+
+    <button class="menu-toggle" onclick="toggleSidebar()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="sidebar" id="sidebar">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about_institute">About Institute</a></li>
+            <li><a href="#courses">About Conference</a></li>
+            <li><a href="#events">Registration</a></li>
+            <li><a href="#publication">Publication Opportunities</a></li>
+            <li><a href="#sponsoring">Sponsoring Organisations</a></li>
+            <li><a href="#speaker">Keynote Speakers</a></li>
+            <li><a href="#organizing">Organizing Team</a></li>
+            <li><a href="#partners">Partners</a></li>
+        </ul>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+    </script>
+
+    <script>
+        // Function to create elements
+        function createElement(tag, attributes = {}, textContent = "") {
+            const element = document.createElement(tag);
+            for (const [key, value] of Object.entries(attributes)) {
+                element.setAttribute(key, value);
+            }
+            if (textContent) {
+                element.textContent = textContent;
+            }
+            return element;
+        }
+        // Navbar
+        const nav = createElement("nav", { class: "navbar navbar-expand-lg navbar-light bg-light" });
+        const container = createElement("div", { class: "container" });
+        const brand = createElement("a", { class: "navbar-brand", href: "#" }, "Website Name");
+        const button = createElement("button", {
+            class: "navbar-toggler",
+            type: "button",
+            "data-bs-toggle": "collapse",
+            "data-bs-target": "#navbarNav",
+            "aria-controls": "navbarNav",
+            "aria-expanded": "false",
+            "aria-label": "Toggle navigation",
+        });
+        button.innerHTML = `<span class="navbar-toggler-icon"></span>`;
+        container.appendChild(brand);
+        container.appendChild(button);
+        nav.appendChild(container);
+
+        // Hero Section
+        const hero = createElement("div", { class: "hero" });
+        const heroText = createElement("h1", {}, "International Conference on Advanced Materials for Sustainable Innovation");
+        hero.appendChild(heroText);
+
+        // About Section
+        const aboutSection = createElement("section", { id: "about_institute", class: "py-5" });
+        const aboutContainer = createElement("div", { class: "container text-center" });
+        aboutContainer.innerHTML = `<h2>About Institute</h2><p style="text-align:justify;">Vivekananda Institute of Professional Studies (VIPS-TC) - Technical Campus, founded in 2000 and affiliated with Guru Gobind Singh Indraprastha University, stands as a beacon of educational excellence. With a NAAC Accredited Grade ‘A++’ rating and NBA Accreditation for the MCA Program, VIPS-TC is recognized by the Bar Council of India (BCI) for all Law Programs and approved by the All-India Council of Technical Education (AICTE) for MCA. Operating with 7 schools, over 8000 students, and 300+ faculty members, VIPS-TC prioritizes progressive learning methods. Our teaching-learning pedagogy emphasizes student engagement through problem and project-based learning, fostering active participation and critical thinking. This commitment to excellence is evident in the consistent achievement of Gold Medals by our students in GGSIPU exams. At the core of VIPS-TC lies the School of Engineering & Technology, a dynamic hub of innovation and learning. Here, students are equipped with the knowledge and skills necessary for success in today's ever-evolving technological landscape. Through a blend of rigorous academics, hands-on learning experiences, and industry collaborations, the School of Engineering & Technology at VIPS-TC prepares students to excel in their chosen fields and make meaningful contributions to society. Join us on our journey of academic excellence and personal growth at Vivekananda Institute of Professional Studies - Technical Campus</p>`;
+        aboutSection.appendChild(aboutContainer);
+
+        // Courses Section
+        const coursesSection = createElement("section", { id: "courses", class: "py-5 bg-light" });
+        const coursesContainer = createElement("div", { class: "container" });
+        coursesContainer.innerHTML = `<h2 class="text-center">About Conference</h2><p style="text-align:justify;">International Conference on Advanced Materials for Sustainable Innovation (IC-AMSI 2024) brings together experts from various fields of materials science and engineering to explore revolutionary developments and applications. The conference encompasses a diverse array of topics, including biomaterials, flexible materials, composite materials, intelligent functional materials, polymer materials, metal-based materials, shape memory alloys, and advanced materials. Additionally, discussions will span from piezoelectric to electronic and photonic materials, covering topics such as materials computational methods, statistical analysis, renewables, green hydrogen, and emerging fields like plasmonic, sensors, and devices for processing materials. Furthermore, discussions will explore applications in renewable energy and powder metallurgy. The conference will also delve into infrastructure and steel technology aspects, emphasizing cross-sector collaboration and innovative solutions for sustainable development. These topics serve as a starting point, with the conference welcoming contributions across a broad spectrum of material science and engineering disciplines.</p>`;
+        coursesSection.appendChild(coursesContainer);
+
+        // IC-AMSI 2025 Logo Section
+        const logoSection = createElement("section", { id: "logo", class: "py-5 bg-light logo-container" });
+        const logoImg = createElement("img", { src: "ic-amsi-2025-logo.png", alt: "IC-AMSI 2025 Logo" });
+        logoSection.appendChild(logoImg);
+
+        // Events Section
+        const eventsSection = createElement("section", { id: "events", class: "py-5" });
+        const eventsContainer = createElement("div", { class: "container text-center" });
+        eventsContainer.innerHTML = `<h2>Registration fee</h2><p>Stay updated with our latest events and activities.</p>`;   // isme registration fee ki image lagani
+        eventsSection.appendChild(eventsContainer);
+
+        // guidelines 
+        const guidelinesSection = createElement("section", { id: "guide", class: "py-5" });
+        const guidelinesContainer = createElement("div", { class: "container text-center" });
+        guidelinesContainer.innerHTML = `<h2>Guidelines for Paper Submission & Registration</h2><p>Guidelines for Abstract Submission:<br> <li>A short abstract of 250 words highlighting the key results should be submitted for Poster Presentation. Authors are suggested to use the attached format. Download file here</li><br> Guidelines for Full Paper Submission: <br><li>*Submissions should adhere to a maximum page limit of 10 pages, ensuring concise and focused presentations of research findings</li><li>Login to: https://cmt3.research.microsoft.com/ICAMSI2024</li><li>Login with an existing email/password or create a new account. And upload a paper on Microsoft CMT.</li><li>Note down the paper ID which will be used for all communications.</li><li>If accepted, a mail will be sent to the participant through Microsoft CMT.</li><li>For Registration, please fill the form attached below, and pay the requisite registration fee (as per the details given). Click Here</li><br>Last Date of Registration And Fee Submission: 30th June 2024<br>Registration fee may be remitted through On-line/NEFT to the following Bank Account.</p>`;   //isme hyperlinks aor pic lagani h 
+        guidelinesSection.appendChild(guidelinesContainer);
+
+        // publication Section
+        const publicationSection = createElement("section", { id: "publication", class: "py-5" });
+        const publicationContainer = createElement("div", { class: "container text-center" });
+        publicationContainer.innerHTML = `<h2>Publication Opportunities</h2><p>tabular image.</p>`;   // isme image lagani
+        publicationSection.appendChild(publicationContainer);
+
+        // criteria Section
+        const criteriaSection= createElement("section", { id: "criteria", class: "py-5" });
+        const criteriaContainer = createElement("div", { class: "container text-center" });
+        criteriaContainer.innerHTML = `<h2>Selection Criteria & Review Process</h2><p><li>Submission in each journal will be considered for publications after the review process is completed</li><li>After submission, your paper will be sent for assessment by independent experts in your field</li><li>The reviewers are asked to judge the validity, significance, and originality of your work</li><li>Our review process employs double blind evaluation, ensuring impartiality by concealing authors' identities</li><li>All submissions undergo a plagiarism check with Turnitin software; accepted papers must have a plagiarism score below 10% to maintain originality and ethical standards</li><li>If the revised manuscript does not meet the journal's standards, it will not be considered for publication</li></p>`;   // isme image lagani
+        criteriaSection.appendChild(criteriaContainer);
+
+        // awards Section
+        const awardsSection = createElement("section", { id: "awards", class: "py-5" });
+        const awardsContainer = createElement("div", { class: "container text-center" });
+        awardsContainer.innerHTML = `<h2><strong>AWARDS</strong></h2><p>AMSI-2024 declares recognition in the categories listed below:<br><li>AMSI Best Oral/Poster Presentation Award</li><li>AMSI Outstanding Researcher Award</li><li>AMSI Emerging Woman in Material Science Award</li></p>`;   
+        awardsSection.appendChild(awardsContainer);
+
+        // speaker Section
+        const speakerSection = createElement("section", { id: "speaker", class: "py-5" });
+        const speakerContainer = createElement("div", { class: "container text-center" });
+        speakerContainer.innerHTML = `<h2>Keynote Speakers</h2><p>tabular image.</p>`;   // isme image lagani
+        speakerSection.appendChild(speakerContainer);
+
+        // Advisory section
+        const AdvisorySection = createElement("section",{id: "advisory",class: "py-5"});
+        const AdvisoryContainer = createElement("div",{class: "container"});
+        AdvisoryContainer.innerHTML = '<h2>International Advisory Committee</h2><p>image</p>'; // isme image lagani
+        AdvisorySection.appendChild(AdvisoryContainer);
+
+        
+
+        // Footer Section
+        const footer = createElement("footer");
+        const footerContainer = createElement("div", { class: "container" });
+        footerContainer.innerHTML = `<p>&copy; 2025 Inspired Website. All rights reserved.</p>`;
+        footer.appendChild(footerContainer);
+
+        // Append all sections to the app div
+        const app = document.getElementById("app");
+        app.appendChild(nav);
+        app.appendChild(hero);
+        app.appendChild(aboutSection);
+        app.appendChild(coursesSection);
+        app.appendChild(eventsSection);
+        app.appendChild(guidelinesSection);
+        app.appendChild(publicationSection);
+        app.appendChild(criteriaSection);
+        app.appendChild(awardsSection);
+        app.appendChild(speakerSection);
+        app.appendChild(AdvisorySection);
+        app.appendChild(footer);
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script>
+        VANTA.NET({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0xf2be00,
+            backgroundColor: 0x3c1515
+        })
+    </script>
+</body>
+</html>
